@@ -1,6 +1,5 @@
 # Solar System Orbital Simulator
 
-NASA-level physics-based orbital mechanics simulator. This project simulates the movement of planets and other celestial bodies around the sun in real-time.
 
 ## Features
 
@@ -10,13 +9,86 @@ NASA-level physics-based orbital mechanics simulator. This project simulates the
 - **Orbit Analysis**: Calculation of orbital elements and energy analysis
 - **Web-based Interface**: User-friendly control panel built with React
 
-## Technologies
-
 ### Backend
-- Python 3.x
-- FastAPI (Web API)
-- NumPy (Numerical computations)
-- SciPy (Advanced mathematical operations)
+- 1. constants.py
+Defines physical constants using NASA/JPL standard values:
+
+Universal gravitational constant (G)
+
+Solar mass
+
+Astronomical Unit (AU)
+
+Speed of light
+
+Default time step and simulation speed multiplier
+
+2. vector3d.py
+Class for 3D vector operations. Basic operations include:
+
+Addition, subtraction, multiplication, division
+
+Magnitude calculation
+
+Normalization
+
+Dot and cross product
+
+Conversion to/from JSON/dictionary
+
+3. gravity.py
+Newtonian gravity calculations. CelestialBody class includes:
+
+Mass, position, velocity, acceleration properties
+
+Gravitational force calculation
+
+Acceleration calculation
+
+Energy calculations (kinetic, potential, total)
+
+Conversion to dictionary
+
+4. kepler.py
+Kepler laws implementation. Functions include:
+
+Orbital elements calculation (a, e, i, Ω, ω, ν)
+
+Orbital velocity calculation
+
+Kepler equation solver
+
+Position prediction
+
+5. simulator.py
+Main simulation engine (OrbitalSimulator class). Features:
+
+Computation using Verlet integration
+
+Management of celestial bodies
+
+Simulation control (start/stop/reset)
+
+Orbit trajectory tracking
+
+Energy analysis
+
+6. main.py
+FastAPI web services. Endpoints include:
+
+Health check
+
+Add celestial body
+
+Simulation control
+
+Get simulation state
+
+Orbital elements
+
+Energy analysis
+
+Trajectory history
 
 ### Frontend
 - React 18
@@ -25,58 +97,7 @@ NASA-level physics-based orbital mechanics simulator. This project simulates the
 - @react-three/fiber (React-Three.js integration)
 - @react-three/drei (Three.js helpers)
 
-## Installation
+## Mit license 
 
-### Backend Installation
+an be improved, runnable and usable, errors can be fixed or can add somethings 
 
-```bash
-cd backend
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
-
-API runs by default at `http://localhost:8000`.
-
-### Frontend Installation
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-Frontend runs by default at `http://localhost:5173`.
-
-## API Endpoints
-
-- `GET /` - Health check
-- `POST /simulation/add-body` - Add celestial body to simulation
-- `POST /simulation/start` - Start simulation
-- `POST /simulation/stop` - Stop simulation
-- `POST /simulation/reset` - Reset simulation
-- `GET /simulation/state` - Current simulation state
-- `GET /simulation/orbital-elements/{body_name}` - Orbital elements
-- `GET /simulation/energy-analysis` - Energy analysis
-- `GET /simulation/trajectory/{body_name}` - Trajectory history
-
-## Physical Constants
-
-The project uses NASA/JPL standard values:
-- Universal gravitational constant (G)
-- Solar mass
-- Astronomical Unit (AU)
-- Speed of light
-
-## Usage
-
-1. Start the server (`uvicorn main:app`)
-2. Start the frontend (`npm run dev`)
-3. Go to `http://localhost:5173` in your browser
-4. Manage simulation from control panel:
-   - Add planets
-   - Start/stop simulation
-   - View orbital elements
-
-## License
-
-This project is for educational purposes.
